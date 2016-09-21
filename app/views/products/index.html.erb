@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="stylesheets/view_table.css">
+<%= render "/admin/settings" %>
+
+<h1>Products</h1>
+
+<%= link_to 'New product', new_product_path, :class =>"action-button shadow animate blue" %><br/><br/>
+<p id="notice"><%= notice %></p>
+<table class="responstable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th>Colour</th>
+      <th style="width:20%">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.product_name, product %></td>
+        <td><%= product.product_type %></td>
+        <td><%= product.product_size %></td>
+        <td><%= product.product_colour %></td>
+        <td><%= link_to image_tag('edit.png', :alt => 'Edit', :title => 'Edit'), edit_product_path(product) %>&nbsp;&nbsp;<%= link_to image_tag('cross.png', :alt => 'Delete', :title => 'Delete'), product_path(product.id), method: :delete, data: { confirm: 'Are you sure you want to delete this product ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,63 @@
+<%= form_for(@vendor) do |f| %>
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+      <ul>
+      <% @vendor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <table>
+    <tr>
+      <td><b>Company Name</b></td>
+      <td colspan="2"><%= f.text_field :company_name, :placeholder => "Company Name", :required => true %></td>
+      <td style="text-align:right;"><b>Name</b>&nbsp;&nbsp;</td>
+      <td style="width:300px;"><%= f.text_field :name, :placeholder => "Name", :required => true %></td>
+    </tr>
+    <tr>
+      <td><b>Mobile Number</b></td>
+      <td><%= f.text_field :contact_number_1, :placeholder => "Primary Number", :required => true, :minlength=>"10", :pattern => '[0-9]{10}\b' %></td>
+      <td style="width:100px;"></td>
+      <td>&nbsp;<b>Alternate Number</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field :contact_number_2 %></td>
+    </tr>
+    <tr>
+      <td><b>Complex/Building Name</b></td>
+      <td colspan="4"><%= f.text_field :address_line_1, :placeholder => "Complex/Building Name"%></td>
+    </tr>
+    <tr>
+      <td><b>Street Name</b></td>
+      <td colspan="4"><%= f.text_field :address_line_2, :placeholder => "Street Name" %></td>
+    </tr>
+    <tr>
+      <td><b>Land Mark</b></td>
+      <td colspan="2"><%= f.text_field :address_line_3, :placeholder => "Land Mark" %></td>
+      <td style="text-align:right;">&nbsp;<b>Pin Code</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field :pin_code, :placeholder => "Pin Code", :required => true, :minlength=>"6", :pattern => '[0-9]{6}\b' %></td>
+    </tr>
+    <tr>
+      <td><b>City</b></td>
+      <td colspan="2"><%= f.text_field :city %></td>
+      <td style="text-align:right;">&nbsp;<b>Taluk</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field :taluk %></td>
+    </tr>
+    <tr>
+      <td><b>District</b></td>
+      <td colspan="2"><%= f.text_field :district %></td>
+      <td style="text-align:right;">&nbsp;<b>State</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field :state %></td>
+    </tr>
+    <tr>
+      <td><b>Email</b></td>
+      <td colspan="2"><%= f.email_field :email, :placeholder => "E-Mail" %></td>
+      <td style="text-align:right;">&nbsp;<b>Web Site</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field :website, :placeholder => "Web Site" %></td>
+    </tr>
+  </table>
+  </div>
+  <%= f.submit :class => "action-button shadow animate blue" %>
+<% end %>

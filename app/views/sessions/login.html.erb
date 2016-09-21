@@ -1,0 +1,21 @@
+<%= form_tag secure_session_url(protocol: 'https'), :id => 'login', :class => 'small_border_form', :style => "margin: 10px 0 0 100px;" do -%>
+  <h2>Login to shipX</h2>
+   <fieldset>
+      <ol>
+        <li>
+          <label style="display: inline;">Username</label>
+          <%= text_field_tag 'login', "", :id => "login_tag" %>
+        </li>
+        <li>
+          <label style="display: inline;">Password</label>
+          <%= password_field_tag 'password', "", :id => "password_tag" %>
+          <span id="login-button" class="button"><button type="submit">Go</button></span>
+        </li>
+      </ol>
+      <p style="font-size: 11px;"><%= link_to 'Forgot password?', forgot_password_users_path %></p>
+   </fieldset>
+<% end %>
+<div id="register-now">
+   <h1>New User?</h1>
+   <%= link_to content_tag(:span, content_tag(:b,'SIGN UP NOW & START SAVING')), registration_form_users_path, :class => "button" %></p>
+</div>

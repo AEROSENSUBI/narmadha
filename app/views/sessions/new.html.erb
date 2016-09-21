@@ -1,0 +1,36 @@
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Narmadha</title>   
+    <link rel="stylesheet" href="/login_page/css/style.css">
+  </head>
+  <body bgcolor="#78F7D2">
+    <div class="wrapper">
+      <div class="container">
+        <h1 style="color:#33FFFF; font-size:40px; font-style:italic; font-weight: bold; font-variant: small-caps;">Welcome to Narmadha Enterprises</h1>
+
+        <%= form_tag('/login') do %>
+            <%= text_field_tag :name, params[:name], :required => true, :placeholder => 'User Name' %>
+            <%= password_field_tag :password, params[:password], :required => true, :placeholder => 'Password' %>
+            <%= submit_tag "Login", :style => "color:green; width:30%;" %>
+          <% if flash[:alert] %>
+            <p id ="notice" style="color:red;"><%= flash[:alert] %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <script src="/login_page/js/index.js"></script>
+     <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+  </body>
+</html>

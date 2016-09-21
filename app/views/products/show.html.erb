@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @product.product_name %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
+<table>
+    <tr>
+      <td><b>Type</b></td>
+      <td style="width:50px;">:-</td>
+      <td><%= @product.product_type %></td>
+    </tr>
+    <tr>
+      <td><b>Size</b></td>
+      <td>:-</td>
+      <td><%= @product.product_size %></td>
+    </tr>
+    <tr>
+      <td><b>Colour</b></td>
+      <td>:-</td>
+      <td><%= @product.product_colour %></td>
+    </tr>
+    <tr>
+      <td><b>Contract</b></td>
+      <td>:-</td>
+      <td><%= @product.contract_id %></td>
+    </tr>
+  </table>

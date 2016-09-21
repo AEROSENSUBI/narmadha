@@ -1,0 +1,47 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <table>
+    <tr>
+      <td><b>Customer</b></td>
+      <td><%= f.autocomplete_field :customer_id, autocomplete_customer_shop_name_orders_path %></td>
+      <td><b>Booking Date</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field  :booking_at, :class => "datepicker", :style => 'width:125px;' %></td>
+      <td>&nbsp;<b>Vendor</b>&nbsp;&nbsp;</td>
+      <td><%= f.select :vendor_id, current_user.vendor_list, {}, {:style => 'width:225px;', :class => "chosen"} %></td>
+    </tr>
+    <tr>
+      <td><b>Product Name</b></td>
+      <td><%= f.select :product_id, Product.all.map(&:product_name), {}, {:style => 'width:225px;'} %></td>
+      <td><b>Quantity</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field :units, :style => 'width:125px;' %></td>
+      <td>&nbsp;<b>Upload</b>&nbsp;&nbsp;</td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.file_field :avatar %></td>
+    </tr>
+    <tr>
+      <td><b>Notes</b></td>
+      <td colspan="5"><%= f.text_area :notes, :style => 'height:100px;width:500px;' %></td>
+    </tr>
+  </table>
+  </div>
+  <%= f.submit :class => "action-button shadow animate blue" %>
+<% end %>
+
+<script>
+  $( function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+</script>

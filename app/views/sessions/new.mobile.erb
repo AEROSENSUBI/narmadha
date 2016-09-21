@@ -1,0 +1,19 @@
+<%= form_tag url_for_logging_in, :id => 'login', :class => 'small_border_form' do -%>
+    <h3>Login</h3>
+  <fieldset>
+    <label>Username</label>
+    <%= text_field_tag  'login', "", :id => "login_tag" %><br/>
+    <label>Password</label>
+    <%= password_field_tag 'password', "", :id => "password_tag" %><br/>
+    <label for="remember_me">Remember me:</label>
+    <%= check_box_tag 'remember_me' %></p>
+    <input type="submit" value="Go"></input>
+  </fieldset>
+  <fieldset>
+    <% if tracking_apk_exists? %>
+      <%= link_to tracking_apk_image_tag, tracking_apk_url %>
+      <br/>
+      <%= link_to 'Consignment Tracking App', tracking_apk_url %>
+    <%- end %>
+    </fieldset>
+<% end %>

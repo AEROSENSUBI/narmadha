@@ -1,0 +1,34 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <table>
+    <tr>
+      <td><b>Name</b></td>
+      <td><%= f.text_field :product_name, :style => 'width:225px;' %></td>
+      <td><b>Type</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field  :product_type, :style => 'width:225px;' %></td>
+    </tr>
+    <tr>
+      <td><b>Size</b></td>
+      <td><%= f.text_field :product_size, :style => 'width:225px;' %></td>
+      <td><b>Colour</b>&nbsp;&nbsp;</td>
+      <td><%= f.text_field  :product_colour, :style => 'width:225px;' %></td>
+    </tr>
+    <tr>
+      <td><b>Contract</b></td>
+      <td><%= f.select :contract_id, current_user.customer_list, {}, {:style => 'width:225px;'} %></td>
+    </tr>
+  </table>
+  </div>
+  <%= f.submit :class => "action-button shadow animate blue" %>
+<% end %>

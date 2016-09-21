@@ -1,0 +1,24 @@
+<%= form_tag url_for_logging_in, :id => 'login', :class => 'small_border_form' do -%>
+  <h2>Login</h2>
+   <fieldset>
+      <ol>
+        <li>
+          <label>Username</label>
+          <%= text_field_tag 'login', "", :id => "login_tag" %>
+        </li>
+        <li>
+          <label>Password</label>
+          <%= password_field_tag 'password', "", :id => "password_tag" %>
+          <span id="login-button" class="button"><button type="submit">Go</button></span>
+        </li>
+      </ol>
+      <p style="font-size: 11px;"><%= link_to 'Forgot password?', forgot_password_users_path %></p>
+   </fieldset>
+
+<% end %>
+
+<!--
+<form id ='signup_button'>
+  <%#= link_to content_tag(:span, content_tag(:b, "SIGN UP NOW")), registration_form_users_path, :class => "button", :style => 'margin-right: 45px;' %>
+</form>
+-->

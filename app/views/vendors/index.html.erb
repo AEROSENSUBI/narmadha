@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="stylesheets/view_table.css">
+
+<h1>Vendors</h1>
+
+<%= link_to 'New Vendor', new_vendor_path, :class =>"action-button shadow animate blue" %><br/><br/>
+<p id="notice"><%= notice %></p>
+<table class="responstable">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City & District</th>
+      <th>Contact Number</th>
+      <th style="width:20%">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= link_to vendor.company_name, vendor %></td>
+        <td><%= vendor.name %></td>
+        <td><%= vendor.address_line %></td>
+        <td><%= vendor.city_and_district %></td>
+        <td><%= vendor.contact_number_1 %></td>
+        <td><%= link_to image_tag('edit.png', :alt => 'Edit', :title => 'Edit'), edit_vendor_path(vendor) %>&nbsp;&nbsp;<%= link_to image_tag('cross.png', :alt => 'Delete', :title => 'Delete'), vendor_path(vendor.id), method: :delete, data: { confirm: 'Are you sure you want to delete this vendor ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
