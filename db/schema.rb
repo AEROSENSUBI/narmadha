@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919021250) do
+ActiveRecord::Schema.define(version: 20160925011033) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -38,32 +38,39 @@ ActiveRecord::Schema.define(version: 20160919021250) do
     t.string   "contact_number_2",    limit: 20
     t.string   "email"
     t.string   "website"
+    t.string   "is_tailors",          limit: 10
+    t.string   "is_upstair",          limit: 10
+    t.string   "is_opposite_or_near", limit: 10
+    t.string   "is_back_side_of",     limit: 10
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.string   "is_tailors"
-    t.string   "is_upstair"
-    t.string   "is_opposite_or_near"
-    t.string   "is_back_side_of"
+  end
+
+  create_table "order_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "order_id"
+    t.integer  "vendor_id"
+    t.integer  "product_id"
+    t.integer  "units"
+    t.datetime "expected_delivery_date"
+    t.string   "notes"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "number"
     t.integer  "customer_id"
-    t.integer  "vendor_id"
     t.datetime "booking_at"
     t.datetime "ready_for_production_at"
     t.datetime "dispatch_at"
     t.datetime "delivery_at"
+    t.datetime "expected_delivery_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string   "product_id"
-    t.string   "units"
-    t.datetime "expected_delivery_date"
-    t.string   "notes"
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,15 +89,14 @@ ActiveRecord::Schema.define(version: 20160919021250) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "login",           limit: 45
-    t.string   "password",        limit: 45
-    t.string   "password_digest", limit: 45
+    t.string   "login"
     t.string   "name"
-    t.string   "salt",            limit: 45
+    t.string   "salt"
+    t.string   "password_digest"
     t.string   "email"
     t.string   "mobile_number"
-    t.datetime "created_at",                 default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.datetime "updated_at",                 default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["mobile_number"], name: "index_users_on_mobile_number", unique: true, using: :btree
   end

@@ -15,6 +15,10 @@ class CreateCustomers < ActiveRecord::Migration[5.0]
       t.string :contact_number_2, :limit => 20
       t.string :email
       t.string :website
+      t.string :is_tailors, :limit => 10
+      t.string :is_upstair, :limit => 10
+      t.string :is_opposite_or_near, :limit => 10
+      t.string :is_back_side_of, :limit => 10
 
       t.timestamps
     end

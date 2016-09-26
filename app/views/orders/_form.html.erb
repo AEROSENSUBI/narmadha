@@ -1,7 +1,7 @@
-<%= form_for(@order) do |f| %>
+<%= nested_form_for @order do |f| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+    <div class="alert alert-success" role="alert">
+      <h2 class="alert-heading"><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
       <ul>
       <% @order.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,33 +10,43 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
   <table>
     <tr>
-      <td><b>Customer</b></td>
-      <td><%= f.autocomplete_field :customer_id, autocomplete_customer_shop_name_orders_path %></td>
-      <td><b>Booking Date</b>&nbsp;&nbsp;</td>
-      <td><%= f.text_field  :booking_at, :class => "datepicker", :style => 'width:125px;' %></td>
-      <td>&nbsp;<b>Vendor</b>&nbsp;&nbsp;</td>
-      <td><%= f.select :vendor_id, current_user.vendor_list, {}, {:style => 'width:225px;', :class => "chosen"} %></td>
+      <td>Customer</td>
+      <% if params[:customer_id].present? %>
+        <td style="width:350px; text-align:center;"><b><%= Customer.find_by_id(params[:customer_id]).try(:shop_name_with_city)%></b></td>
+      <% else %>
+        <td><%= f.autocomplete_field :customer_name, autocomplete_customer_shop_name_orders_path, update_elements:{id: '#order_customer_id'} %></td>
+      <% end %>      
+      <%= f.hidden_field :customer_id, :id =>'order_customer_id' %>
+      <td>Booking Date&nbsp;&nbsp;</td>
+      <td><%= f.date_field  :booking_at %></td>
     </tr>
-    <tr>
-      <td><b>Product Name</b></td>
-      <td><%= f.select :product_id, Product.all.map(&:product_name), {}, {:style => 'width:225px;'} %></td>
-      <td><b>Quantity</b>&nbsp;&nbsp;</td>
-      <td><%= f.text_field :units, :style => 'width:125px;' %></td>
-      <td>&nbsp;<b>Upload</b>&nbsp;&nbsp;</td>
-      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.file_field :avatar %></td>
-    </tr>
-    <tr>
-      <td><b>Notes</b></td>
-      <td colspan="5"><%= f.text_area :notes, :style => 'height:100px;width:500px;' %></td>
-    </tr>
+    <table id="order_product_table" width="80%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Product</th>
+          <th>Units</th>
+          <th>Notes</th>
+          <th>Exp Delivery Date</th>
+          <th>Upload</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <%= f.fields_for :order_products, :wrapper => false do |builder| -%>
+        <%= render "order_product", :f => builder %>
+      <% end -%>
+    </table>
+      <tr><td colspan="5", class="float:right;"><%= f.link_to_add "Add Product", :order_products %></td></tr>
   </table>
   </div>
   <%= f.submit :class => "action-button shadow animate blue" %>
 <% end %>
 
+<script src="/javascripts/application.js"></script>
 <script>
   $( function() {
     $( ".datepicker" ).datepicker({

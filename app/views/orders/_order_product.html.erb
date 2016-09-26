@@ -1,0 +1,9 @@
+	<tr>
+		<td><%= f.select :vendor_id, current_user.vendor_list, {}, {:style => 'width:125px;', :class => "form-control btn-outline-warning"} %></td>
+		<td><%= f.select :product_id, Product.all.map(&:product_name), {}, {:style => 'width:125px;', :class => "form-control btn-outline-warning"} %></td>
+		<td><%= f.text_field  :units, {:style => 'width:100px;', :class => 'form-control btn-outline-warning'} %></td>
+		<td><%= f.text_field  :notes, {:style => 'width:140px;', :class => 'form-control btn-outline-warning'} %></td>
+		<td><%= f.date_field  :expected_delivery_date, {:style => 'width:175px;', :class => 'form-control btn-outline-warning'} %></td>
+		<td><%= f.file_field  :avatar, :style => 'width:225px;' %></td>
+		<td><%= f.link_to_remove image_tag('cross.png', :alt => 'Delete', :title => 'Delete') %></td>
+	</tr>

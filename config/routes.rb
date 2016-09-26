@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :orders do
     get :autocomplete_customer_shop_name, :on => :collection
+    match :delete_order_product, :on => :member, :via => :post
   end
   resources :products
   resources :contracts

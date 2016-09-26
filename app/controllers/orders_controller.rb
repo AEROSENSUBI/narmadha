@@ -10,7 +10,12 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    if params[:customer_id].present?
+      @order = Order.new(:customer_id => params[:customer_id].to_i)
+    else
+      @order = Order.new
+    end
+    @order.order_products.build
     render  :action => 'new'
   end
 
@@ -19,7 +24,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-
+    binding.pry
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'order was successfully created.' }
@@ -51,6 +56,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def delete_order_product
+    @order_product = @order.order_products.find(params[:order_order_product_id])
+    respond_to do |format|
+      if @order_product.destroy
+        format.html { redirect_to edit_order_path(@order) }
+        format.js
+      else
+        flash[:error] = "Failed to delete consignment content."
+        format.html { redirect_to edit_order_path(@order) }
+        format.js { js_redirect_to(edit_order_path(@order)) }
+      end
+    end
+  end
+
   private
 
     def set_order
@@ -59,6 +78,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit( :number, :customer_id, :vendor_id, :booking_at, :ready_for_production_at, :dispatch_at, :delivery_at, :avatar)
+      params.require(:order).permit(:customer_id, :vendor_id, :booking_at, :ready_for_production_at, :dispatch_at, :delivery_at, 
+                                    order_products_attributes: [:id, :vendor_id, :product_id, :units, :expected_delivery_date, :notes, :_destroy, :order_id])
     end
 end

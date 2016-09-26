@@ -1,25 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @order.number %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
+<h1><%= @order.id %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
 <table>
-    <tr>
-      <td><b>Current Status</b></td>
-      <td style="width:50px;">:-</td>
-      <td><%= @order.status %></td>
-    </tr>
-    <tr>
-      <td><b>Booking Date</b></td>
-      <td>:-</td>
-      <td><%= @order.booking_at %></td>
-    </tr>
-    <tr>
-      <td><b>Customer</b></td>
-      <td>:-</td>
-      <td><%= @order.customer_name %></td>
-    </tr>
-    <tr>
-      <td><b>Vendor</b></td>
-      <td>:-</td>
-      <td><%= @order.vendor_name %></td>
-    </tr>
   </table>

@@ -28,8 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
-source 'https://rails-assets.org' do
-	gem 'rails-assets-tether', '>= 1.1.0'
+source 'http://insecure.rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 # Use Capistrano for deployment
@@ -49,6 +49,7 @@ gem 'simple_form'
 gem "paperclip", "~> 5.0.0"
 gem 'rails4-autocomplete'
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem "nested_form"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

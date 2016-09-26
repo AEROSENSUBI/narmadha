@@ -4,17 +4,19 @@
     <title>Narmadha</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'rails' %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
   	<% if !(params[:controller] == "sessions" && params[:action] == "new") %>
-      <link rel="stylesheet" href="/stylesheets/application.css">
       <link rel="stylesheet" href="/stylesheets/date_picker.css">
+      <script src="/javascripts/application.js"></script>
       <%= javascript_include_tag "date_picker" %>
-  		<h1 style="text-align:center; font-size:70px; font-style:italic; font-weight: bold; font-variant: small-caps;">Narmadha Selected Labels</h1>
-  		<div><%= render :partial => 'layouts/topnav' %></div>
-      <div class="center"><%= yield %></div>
+  		<%= render :partial => 'layouts/topnav' %><br/><br/>
+      <div class="container">
+        <%= yield %>
+      </div>
   	<% else %>
       <%= yield %>
     <% end %>

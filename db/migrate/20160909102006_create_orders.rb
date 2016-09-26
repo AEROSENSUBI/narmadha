@@ -3,11 +3,11 @@ class CreateOrders < ActiveRecord::Migration[5.0]
     create_table :orders do |t|
       t.integer 	:number
       t.integer 	:customer_id
-      t.integer 	:vendor_id
       t.datetime 	:booking_at
       t.datetime 	:ready_for_production_at
       t.datetime 	:dispatch_at
-      t.datetime 	:delivery_at
+      t.datetime  :delivery_at
+      t.datetime 	:expected_delivery_at
 
       t.timestamps
     end

@@ -1,7 +1,9 @@
 class CreateUsers < ActiveRecord::Migration[5.0]
   def self.up
     create_table :users do |t|
+      t.string :login
       t.string :name
+      t.string :salt
       t.string :password_digest
       t.string :email
       t.string :mobile_number
