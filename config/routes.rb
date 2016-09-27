@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
-  match '/settings' => 'admin#settings', :as => :settings, :via => :get
 
   get 'admin' => 'admin#index'
   controller :sessions do
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
     match :delete_order_product, :on => :member, :via => :post
   end
   resources :products
-  resources :contracts
   resources :customers
   resources :vendors
 end

@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20160925011033) do
 
-  create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer  "vendor_id"
-    t.float    "customer_unit_price", limit: 24
-    t.float    "vendor_unit_price",   limit: 24
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "shop_name",           limit: 100
@@ -78,9 +67,10 @@ ActiveRecord::Schema.define(version: 20160925011033) do
     t.string   "product_type"
     t.string   "product_size"
     t.string   "product_colour"
-    t.integer  "contract_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.float    "customer_unit_price", limit: 24
+    t.float    "vendor_unit_price",   limit: 24
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "routes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

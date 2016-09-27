@@ -5,7 +5,8 @@ class CreateProducts < ActiveRecord::Migration[5.0]
     	t.string	:product_type
     	t.string	:product_size
     	t.string	:product_colour
-    	t.integer	:contract_id
+      t.float   :customer_unit_price
+      t.float   :vendor_unit_price
 
       t.timestamps
     end

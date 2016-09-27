@@ -40,10 +40,10 @@
         <%= render "order_product", :f => builder %>
       <% end -%>
     </table>
-      <tr><td colspan="5", class="float:right;"><%= f.link_to_add "Add Product", :order_products %></td></tr>
+      <tr><td colspan="5", class="float:right;"><%= f.link_to_add "Add Product", :order_products, :class =>"btn btn-warning btn-sm" %></td></tr>
   </table>
   </div>
-  <%= f.submit :class => "action-button shadow animate blue" %>
+  <%= f.submit :class => "btn btn-primary pull-xs-right" %>
 <% end %>
 
 <script src="/javascripts/application.js"></script>

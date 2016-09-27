@@ -24,10 +24,6 @@
       <td><b>Colour</b>&nbsp;&nbsp;</td>
       <td><%= f.text_field  :product_colour, :style => 'width:225px;' %></td>
     </tr>
-    <tr>
-      <td><b>Contract</b></td>
-      <td><%= f.select :contract_id, current_user.customer_list, {}, {:style => 'width:225px;'} %></td>
-    </tr>
   </table>
   </div>
   <%= f.submit :class => "action-button shadow animate blue" %>
