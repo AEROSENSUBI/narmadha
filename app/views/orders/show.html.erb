@@ -2,4 +2,42 @@
 
 <h1><%= @order.id %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
 <table>
+    <tr>
+      <td><b>Booking Date</b></td>
+      <td style="width:50px;">:-</td>
+      <td><%= @order.booking_at.to_date %></td>
+    </tr>
+    <tr>
+      <td><b>Customer Name</b></td>
+      <td>:-</td>
+      <td><%= @order.customer_name %></td>
+    </tr>
+  </table>
+  <br/><br/><br/>
+  <h3>Order Products</h3>
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Product</th>
+        <th>Units</th>
+        <th>Booking Date</th>
+        <th>Expected Delivery Date</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @order.order_products.each do |op| %>
+        <tr>
+          <td><%= op.id %></td>
+          <td><%= op.product_name %></td> 
+          <td><%= op.units %></td>
+          <td><%= op.order.booking_at.to_date %></td>
+          <td><%= op.expected_delivery_date.to_date %></td>
+          <td>&#8377;<%= op.total_customer_charge %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>

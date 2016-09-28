@@ -1,6 +1,6 @@
 class Vendor < ApplicationRecord
 
-	 has_many								:orders
+	 has_many								:order_products
 	 validates						  :contact_number_1, uniqueness: true
 
 	def address_line

@@ -15,6 +15,6 @@
     <tr>
       <td><b>Colour</b></td>
       <td>:-</td>
-      <td><%= @product.product_colour %></td>
+      <td><%= content_tag(:span, "Product Colour",  :style => "background-color:#{@product.product_colour}") %></td>
     </tr>
   </table>

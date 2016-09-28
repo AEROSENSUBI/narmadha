@@ -26,6 +26,6 @@ class Order < ApplicationRecord
 	end
 
 	def total_charges
-		order_products.map(&:customer_charges).sum
+		order_products.map(&:total_customer_charge).sum.to_f
 	end
 end

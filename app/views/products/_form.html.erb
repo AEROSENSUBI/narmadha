@@ -10,21 +10,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-  <table>
-    <tr>
-      <td><b>Name</b></td>
-      <td><%= f.text_field :product_name, :style => 'width:225px;' %></td>
-      <td><b>Type</b>&nbsp;&nbsp;</td>
-      <td><%= f.text_field  :product_type, :style => 'width:225px;' %></td>
-    </tr>
-    <tr>
-      <td><b>Size</b></td>
-      <td><%= f.text_field :product_size, :style => 'width:225px;' %></td>
-      <td><b>Colour</b>&nbsp;&nbsp;</td>
-      <td><%= f.text_field  :product_colour, :style => 'width:225px;' %></td>
-    </tr>
-  </table>
+  <div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label"><b>Name</b></label>
+    <div class="col-xs-3">
+      <%= f.text_field :product_name, :required => true %>
+    </div>
   </div>
-  <%= f.submit :class => "action-button shadow animate blue" %>
+  <div class="form-group row">
+    <label for="example-search-input" class="col-xs-2 col-form-label"><b>Type</b></label>
+    <div class="col-xs-3">
+      <%= f.text_field :product_type, :required => true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-email-input" class="col-xs-2 col-form-label"><b>Size</b></label>
+    <div class="col-xs-3">
+      <%= f.text_field :product_size, :required => true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-email-input" class="col-xs-2 col-form-label"><b>Customer Price</b></label>
+    <div class="col-xs-3">
+      <%= f.text_field :customer_unit_price, :required => true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-email-input" class="col-xs-2 col-form-label"><b>Vendor Price</b></label>
+    <div class="col-xs-3">
+      <%= f.text_field :vendor_unit_price, :required => true %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-url-input" class="col-xs-2 col-form-label"><b>Colour</b></label>
+    <div class="col-xs-2">
+      <%= f.color_field :product_colour %>
+    </div>
+  </div>
+  <%= f.submit :class => "btn btn-success" %>
 <% end %>
+
+<script src="/javascripts/application.js"></script>

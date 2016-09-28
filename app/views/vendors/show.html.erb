@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @vendor.company_name %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
+<p class="pull-xs-right"><%= link_to image_tag('create.png', :alt => 'Create Order', :title => 'Create Order'), new_order_path(:vendor_id => @vendor) %></p>
 <table>
     <tr>
       <td><b>Name</b></td>
@@ -17,14 +18,43 @@
       <td>:-</td>
       <td><%= @vendor.full_address %></td>
     </tr>
-    <tr>
-      <td><b>E-Mail</b></td>
-      <td>:-</td>
-      <td><%= @vendor.email %></td>
-    </tr>
-    <tr>
-      <td><b>WebSite</b></td>
-      <td>:-</td>
-      <td><%= @vendor.website %></td>
-    </tr>
+    <% if  @vendor.email.present? %>
+      <tr>
+        <td><b>E-Mail</b></td>
+        <td>:-</td>
+        <td><%= @vendor.email %></td>
+      </tr>
+    <% end %>
+    <% if  @vendor.website.present? %>
+      <tr>
+        <td><b>WebSite</b></td>
+        <td>:-</td>
+        <td><%= @vendor.website %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br/><br/><br/>
+  <h3>Order Products</h3>
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Product</th>
+        <th>Units</th>
+        <th>Booking Date</th>
+        <th>Expected Delivery Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @vendor.order_products.each do |op| %>
+        <tr>
+          <td><%= op.id %></td>
+          <td><%= op.product_name %></td> 
+          <td><%= op.units %></td>
+          <td><%= op.order.booking_at.to_date %></td>
+          <td><%= op.expected_delivery_date.to_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>

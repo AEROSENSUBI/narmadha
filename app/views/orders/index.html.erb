@@ -8,7 +8,7 @@
       <th>Number</th>
       <th>Customer</th>
       <th>Booking Date</th>
-      <th>Vendor</th>
+      <th>Units</th>
       <th>Status</th>
       <th style="width:20%">Action</th>
     </tr>
@@ -17,10 +17,10 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.number, order %></td>
+        <td><%= link_to order.id, order %></td>
         <td><%= order.customer_name %></td>
-        <td><%= order.booking_at %></td>
-        <td><%= order.vendor_name %></td>
+        <td><%= order.booking_at.to_date %></td>
+        <td><%= order.total_units %></td>
         <td><%= order.status %></td>
         <td><%= link_to image_tag('edit.png', :alt => 'Edit', :title => 'Edit'), edit_order_path(order) %>&nbsp;&nbsp;<%= link_to image_tag('cross.png', :alt => 'Delete', :title => 'Delete'), order_path(order.id), method: :delete, data: { confirm: 'Are you sure you want to delete this Order ?' } %></td>
       </tr>

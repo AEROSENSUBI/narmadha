@@ -17,11 +17,11 @@
       <% if params[:customer_id].present? %>
         <td style="width:350px; text-align:center;"><b><%= Customer.find_by_id(params[:customer_id]).try(:shop_name_with_city)%></b></td>
       <% else %>
-        <td><%= f.autocomplete_field :customer_name, autocomplete_customer_shop_name_orders_path, update_elements:{id: '#order_customer_id'} %></td>
+        <td><%= f.autocomplete_field :customer_name, autocomplete_customer_shop_name_orders_path, update_elements:{id: '#order_customer_id'}, :required => true %></td>
       <% end %>      
       <%= f.hidden_field :customer_id, :id =>'order_customer_id' %>
       <td>Booking Date&nbsp;&nbsp;</td>
-      <td><%= f.date_field  :booking_at %></td>
+      <td><%= f.date_field  :booking_at, :required => true %></td>
     </tr>
     <table id="order_product_table" width="80%" cellspacing="0">
       <thead>

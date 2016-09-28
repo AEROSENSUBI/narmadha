@@ -24,7 +24,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    binding.pry
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'order was successfully created.' }
@@ -78,7 +77,8 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
+      binding.pry
       params.require(:order).permit(:customer_id, :vendor_id, :booking_at, :ready_for_production_at, :dispatch_at, :delivery_at, 
-                                    order_products_attributes: [:id, :vendor_id, :product_id, :units, :expected_delivery_date, :notes, :_destroy, :order_id])
+                                    order_products_attributes: [:id, :vendor_id, :product_id, :units, :expected_delivery_date, :notes, :_destroy, :order_id, :avatar])
     end
 end
