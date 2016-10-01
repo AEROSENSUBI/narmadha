@@ -3,9 +3,10 @@ class OrderProduct < ApplicationRecord
   belongs_to        :order
 	belongs_to        :vendor
   belongs_to        :product
+  belongs_to        :send_order
 	has_attached_file :avatar, styles: { medium: "300x300>" }, default_url: "/images/:style/missing.png",
                     :path => "/Sites/shared/images/:class/:attachment/:id_partition/:style/:filename",
-                    :url => '/images/:class/:attachment/:id_partition/:style/:filename'
+                    :url => '/system/:class/:attachment/:id_partition/:style/:filename'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def customer_charges

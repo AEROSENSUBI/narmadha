@@ -1,0 +1,26 @@
+<h1>Send Order</h1>
+<p id="notice"><%= notice %></p>
+
+
+<table style="width:100%;">
+	<% @order_products.each_with_index do |op, i| %>
+		<% if i.even? %><tr><% end %>
+			<td>
+		  <table border="1">
+		    <tr>
+		      <td style="width:50%;"><center><%= wicked_pdf_image_tag(op.avatar.url(:medium), size: "320x140") %></center></td>
+		    </tr>
+		    <tr><td style="font-size:25px;"><%= "#{op.product.product_size} (#{op.product.product_colour}) #{op.units}" %></td></tr>
+		    <tr><td>Notes : <%= op.notes %></td></tr>
+		  </table>
+		  </td>
+		  <td style="width:2%;"></td>
+		<% if i.odd? %></tr><tr style="height:20px;"></tr><% end %>
+	<% end %>
+</table>
+
+<style type="text/css">
+	table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid;
+}
+</style>

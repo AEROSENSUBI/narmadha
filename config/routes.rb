@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   end
   resources :products
   resources :customers
-  resources :vendors
+  resources :vendors do
+    get :send_orders, :on => :collection
+  end
 end

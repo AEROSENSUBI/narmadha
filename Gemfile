@@ -50,6 +50,10 @@ gem "paperclip", "~> 5.0.0"
 gem 'rails4-autocomplete'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem "nested_form"
+gem 'mail', '~> 2.6', '>= 2.6.3'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'rubyzip'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

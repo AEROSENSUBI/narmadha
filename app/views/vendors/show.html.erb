@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @vendor.company_name %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
-<p class="pull-xs-right"><%= link_to image_tag('create.png', :alt => 'Create Order', :title => 'Create Order'), new_order_path(:vendor_id => @vendor) %></p>
+<p class="pull-xs-right"><%= link_to image_tag('down.png', :alt => 'Download PDF', :title => 'Download PDF'), send_orders_vendors_path(:id => @vendor, :format => :pdf)%><%= link_to image_tag('message.png', :alt => 'Send Order', :title => 'Send Order'), send_orders_vendors_path(:id => @vendor) %></p>
 <table>
     <tr>
       <td><b>Name</b></td>

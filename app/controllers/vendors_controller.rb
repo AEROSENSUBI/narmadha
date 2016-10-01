@@ -1,5 +1,5 @@
 class VendorsController < ApplicationController
-	before_action :set_vendor, only: [:show, :edit, :update, :destroy]
+	before_action :set_vendor, only: [:show, :edit, :update, :destroy, :send_orders]
 
    def index
     @vendors = Vendor.all
@@ -47,6 +47,18 @@ class VendorsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to vendors_url, notice: 'vendor was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  def send_orders
+    @order_products = @vendor.order_products
+    respond_to do |format|
+      format.html
+      format.pdf do
+        #render pdf: "sample"
+        pdf1 = WickedPdf.new.pdf_from_string(render_to_string('vendors/send_orders.pdf.erb', layout: 'layouts/pdf.html.erb'))
+        send_data pdf1, :filename => "#{@vendor.company_name}_#{Date.today}.pdf", :type => "application/pdf", :disposition => "attachment"
+      end
     end
   end
 

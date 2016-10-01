@@ -41,3 +41,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <% @order.order_products.each do |op| %>
+    <%= image_tag(op.avatar.url(:medium), size: "320x150") %><br/>
+    <%= "#{File.basename(op.avatar.path)} (#{@order.id})" %>
+  <% end %>

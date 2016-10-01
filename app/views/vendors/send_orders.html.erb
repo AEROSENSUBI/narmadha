@@ -1,0 +1,41 @@
+<h1>Send Order</h1>
+<p id="notice"><%= notice %></p>
+<table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th class='noprint'><input type="checkbox" id="select_all"/></th>
+        <th>Number</th>
+        <th>Product</th>
+        <th>Units</th>
+        <th>Booking Date</th>
+        <th>Expected Delivery Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @order_products.each do |op| %>
+        <tr>
+          <td class='noprint'><input type="checkbox" name="order_products[<%=op.id%>]" class="lr_select"/></td>
+          <td><%= op.id %></td>
+          <td><%= op.product_name %></td> 
+          <td><%= op.units %></td>
+          <td><%= op.order.booking_at.to_date %></td>
+          <td><%= op.expected_delivery_date.to_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <script type="text/javascript">
+    $('#select_all').click(function() {
+       if (this.checked) {
+           $(':checkbox').each(function() {
+               this.checked = true;                        
+           });
+       } else {
+          $(':checkbox').each(function() {
+               this.checked = false;                        
+           });
+       } 
+    });
+  </script>
