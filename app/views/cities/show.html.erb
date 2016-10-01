@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @city.area %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
+<p class="pull-xs-right"><%= link_to image_tag('create.png', :alt => 'Create City', :title => 'Create City'), new_city_path(:city_id => @city) %></p>
+<table>
+    <tr>
+      <td><b>City</b></td>
+      <td style="width:50px;">:-</td>
+      <td><%= @city.city %></td>
+    </tr>
+    <tr>
+      <td><b>Taluk</b></td>
+      <td>:-</td>
+      <td><%= @city.taluk %></td>
+    </tr>
+    <tr>
+      <td><b>District</b></td>
+      <td>:-</td>
+      <td><%= @city.district %></td>
+    </tr>
+    <tr>
+      <td><b>State</b></td>
+      <td>:-</td>
+      <td><%= @city.state %></td>
+    </tr>
+    <tr>
+      <td><b>Pin COde</b></td>
+      <td>:-</td>
+      <td><%= @city.pin_code %></td>
+    </tr>
+  </table>

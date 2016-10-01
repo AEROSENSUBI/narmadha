@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  autocomplete  :city, :area, :display_value => :area_with_city, :extra_data => [:area, :city, :taluk, :district, :state, :pin_code]
 
    def index
     @customers = Customer.all
@@ -58,7 +59,7 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit( :name, :shop_name, :address_line_1, :address_line_2, :address_line_3, :city, :taluk, :district, :state, :pin_code,
+      params.require(:customer).permit( :name, :shop_name, :address_line_1, :address_line_2, :address_line_3, :area, :city, :taluk, :district, :state, :pin_code,
                                         :contact_number_1, :contact_number_2, :email, :website, :is_tailors, :is_upstair, :is_opposite_or_near, :is_back_side_of)
     end
 end

@@ -18,8 +18,11 @@ Rails.application.routes.draw do
     match :delete_order_product, :on => :member, :via => :post
   end
   resources :products
-  resources :customers
+  resources :customers do
+    get :autocomplete_city_area, :on => :collection
+  end
   resources :vendors do
     get :send_orders, :on => :collection
   end
+  resources :cities
 end

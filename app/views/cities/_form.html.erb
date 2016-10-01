@@ -1,0 +1,37 @@
+<%= form_for(@city,  :html => {:class => 'form-inline'}) do |f| %>
+  <% if @city.errors.any? %>
+    <div class="alert alert-success" role="alert">
+      <h2 class="alert-heading"><%= pluralize(@city.errors.count, "error") %> prohibited this city from being saved:</h2>
+      <ul>
+      <% @city.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr class="row">
+      <td>Area</td>
+      <td><%= f.text_field :area, :placeholder => "Area", :required => true %></td>
+      <td style="width:100px;"></td>
+      <td style="text-align:right;">City&nbsp;&nbsp;</td>
+      <td style="width:300px;"><%= f.text_field :city, :placeholder => "City", :required => true %></td>
+    </tr>
+    <tr class="row">
+      <td>Taluk</td>
+      <td colspan="2"><%= f.text_field :taluk, :placeholder => "Taluk", :required => true %></td>
+      <td>&nbsp;District&nbsp;&nbsp;</td>
+      <td><%= f.text_field :district, :placeholder => "Taluk", :required => true %></td>
+    </tr>
+    <tr class="row">
+      <td>State</td>
+      <td colspan="2"><%= f.text_field :state, :placeholder => "State", :required => true %></td>
+      <td>&nbsp;Pin Code&nbsp;&nbsp;</td>
+      <td><%= f.text_field :pin_code, :placeholder => "Pin Code", :required => true, :minlength=>"6", :pattern => '[0-9]{6}\b' %></td>
+    </tr>
+  </table>
+  <%= f.submit :class => "btn btn-success" %>
+<% end %>
+
+<script src="/javascripts/application.js"></script>

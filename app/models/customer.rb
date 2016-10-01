@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
 	end
 
 	def full_address
-		address_line + ', ' + city + ', ' + taluk + ', ' + district + ', ' + state + ' - ' + pin_code
+		address_line + ', ' + area + ', ' + city +  ' - ' + pin_code + ' , ' + taluk + ', ' + district + ', ' + state
 	end
 
 	def mobile_number

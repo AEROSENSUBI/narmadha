@@ -1,0 +1,31 @@
+<h1>Cities</h1>
+
+<%= link_to 'New City', new_city_path, :class =>"btn btn-primary pull-xs-right" %><br/><br/>
+<p id="notice"><%= notice %></p>
+<table class="table table-sm table-inverse">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Area</th>
+      <th>City</th>
+      <th>Pincode</th>
+      <th>Taluk</th>
+      <th>District & State</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= link_to city.id, city %></td>
+        <td><%= city.area %></td>
+        <td><%= city.city %></td>
+        <td><%= city.pin_code %></td>
+        <td><%= city.taluk %></td>
+        <td><%= "#{city.district}, #{city.state}" %></td>
+        <td><%= link_to image_tag('edit.png', :alt => 'Edit', :title => 'Edit'), edit_city_path(city) %>&nbsp;&nbsp;<%= link_to image_tag('cross.png', :alt => 'Delete', :title => 'Delete'), city_path(city), method: :delete, data: { confirm: 'Are you sure you want to delete this city ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

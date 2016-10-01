@@ -36,8 +36,8 @@
       <td>Land Mark</td>
       <td><%= f.text_field :address_line_3, :placeholder => "Land Mark" %></td>
       <td>&nbsp;&nbsp;<%= f.check_box :is_back_side_of, {}, 'Back Side', '' %>&nbsp;&nbsp;BackSide</td>
-      <td style="text-align:right;">&nbsp;Pin Code&nbsp;&nbsp;</td>
-      <td><%= f.text_field :pin_code, :placeholder => "Pin Code", :required => true, :minlength=>"6", :pattern => '[0-9]{6}\b' %></td>
+      <td style="text-align:right;">&nbsp;Area&nbsp;&nbsp;</td>
+      <td><%= f.autocomplete_field :area, autocomplete_city_area_customers_path, update_elements:{area: '#customer_area', city: '#customer_city', taluk: '#customer_taluk', district: '#customer_district', state: '#customer_state', pin_code: '#customer_pin_code'}, :required => true %></td>
     </tr>
     <tr class="row">
       <td>City</td>
@@ -50,6 +50,11 @@
       <td colspan="2"><%= f.text_field :district, :style => "width:100%;" %></td>
       <td style="text-align:right;">&nbsp;State&nbsp;&nbsp;</td>
       <td><%= f.text_field :state %></td>
+    </tr>
+    <tr class="row">
+      <td colspan="3"></td>
+      <td style="text-align:right;">Pin Code</td>
+      <td><%= f.text_field :pin_code, :placeholder => "Pin Code", :required => true, :minlength=>"6", :pattern => '[0-9]{6}\b' %></td>
     </tr>
     <tr class="row">
       <td>Email</td>
