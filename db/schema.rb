@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001015007) do
+ActiveRecord::Schema.define(version: 20161002005612) do
+
+  create_table "charges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "customer_id"
+    t.float    "product_charge",    limit: 24
+    t.float    "courier_charge",    limit: 24
+    t.float    "designing_charge",  limit: 24
+    t.float    "additional_charge", limit: 24
+    t.float    "advance_payed",     limit: 24
+    t.float    "total_charges",     limit: 24
+    t.float    "payed_amount",      limit: 24
+    t.float    "payed_type",        limit: 24
+    t.float    "remaining_amount",  limit: 24
+    t.float    "balance_amount",    limit: 24
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "area",       limit: 50
@@ -72,8 +88,14 @@ ActiveRecord::Schema.define(version: 20161001015007) do
     t.datetime "dispatch_at"
     t.datetime "delivery_at"
     t.datetime "expected_delivery_at"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.float    "product_charge",          limit: 24
+    t.float    "courier_charge",          limit: 24
+    t.float    "designing_charge",        limit: 24
+    t.float    "additional_charge",       limit: 24
+    t.float    "advance_payed",           limit: 24
+    t.float    "total_charges",           limit: 24
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
