@@ -17,7 +17,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.id, order %></td>
+        <td><%= link_to order.display_number, order %></td>
         <td><%= order.customer_name %></td>
         <td><%= order.booking_at.to_date %></td>
         <td><%= order.total_units %></td>

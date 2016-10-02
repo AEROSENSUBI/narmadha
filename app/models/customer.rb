@@ -12,11 +12,11 @@ class Customer < ApplicationRecord
 	end
 
 	def city_and_district
-		city + ', ' + taluk + ', ' + district + ' - ' + pin_code
+		area + ', ' + city + ', ' + taluk + ', ' + district + ' - ' + pin_code
 	end
 
 	def full_address
-		address_line + ', ' + area + ', ' + city +  ' - ' + pin_code + ' , ' + taluk + ', ' + district + ', ' + state
+		address_line + ', ' + area + ', ' + city +  ' - ' + pin_code + ', ' + taluk + ', ' + district + ', ' + state
 	end
 
 	def mobile_number

@@ -5,8 +5,8 @@ class Order < ApplicationRecord
 	has_many   			:order_products, 	:dependent  => :destroy
 	accepts_nested_attributes_for 	:order_products, :allow_destroy => true
 
-	def number
-		number || id
+	def display_number
+		number || "PH: #{id}"
 	end
 	
 	def customer_name

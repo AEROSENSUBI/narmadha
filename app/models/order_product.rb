@@ -10,11 +10,11 @@ class OrderProduct < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def customer_charges
-  	product.customer_unit_price.to_i
+  	product.customer_unit_price.to_f
   end
 
   def vendor_charges
-    product.vendor_unit_price.to_i
+    product.vendor_unit_price.to_f
   end
  
   def product_name

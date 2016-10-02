@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @order.id %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
+<h1><%= @order.display_number %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
 <table>
     <tr>
       <td><b>Booking Date</b></td>
@@ -44,5 +44,5 @@
 
   <% @order.order_products.each do |op| %>
     <%= image_tag(op.avatar.url(:medium), size: "320x150") %><br/>
-    <%= "#{File.basename(op.avatar.path)} (#{@order.id})" %>
+    <%= "#{File.basename(op.avatar.path)} (#{@order.id})" if op.avatar.present? %>
   <% end %>

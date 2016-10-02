@@ -12,11 +12,11 @@
 
   <table>
     <tr class="row">
-      <td>Shop Name</td>
-      <td><%= f.text_field :shop_name, :placeholder => "Shop Name", :required => true %></td>
-      <td style="width:100px;">&nbsp;&nbsp;<%= f.check_box :is_tailors, {:checked => true}, 'Tailors', '' %>&nbsp;&nbsp;&nbsp;Tailors</td>
-      <td style="text-align:right;">Name&nbsp;&nbsp;</td>
-      <td style="width:300px;"><%= f.text_field :name, :placeholder => "Name", :required => true %></td>
+      <td>Name</td>
+      <td><%= f.text_field :name, :placeholder => "Name", :required => true %></td>
+      <td style="width:100px;"></td>
+      <td style="text-align:right;">Shop Name&nbsp;&nbsp;</td>
+      <td style="width:300px;"><%= f.text_field :shop_name, :placeholder => "Shop Name", :required => true %>&nbsp;&nbsp;<%= f.check_box :is_tailors, {:checked => true}, 'Tailors', '' %>&nbsp;&nbsp;&nbsp;Tailors</td>
     </tr>
     <tr class="row">
       <td>Mobile Number</td>

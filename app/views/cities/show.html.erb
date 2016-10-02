@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @city.area %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %></h1>
-<p class="pull-xs-right"><%= link_to image_tag('create.png', :alt => 'Create City', :title => 'Create City'), new_city_path(:city_id => @city) %></p>
+<h1><%= @city.area %>&nbsp;&nbsp;<%= link_to image_tag('back.png', :alt => 'back', :title => 'Go back'), 'javascript:window.history.back();' %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to image_tag('create.png', :alt => 'Create City', :title => 'Create City'), new_city_path(:city_id => @city) %></h1>
+<p class="pull-xs-right"></p>
 <table>
     <tr>
       <td><b>City</b></td>
